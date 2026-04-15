@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>F00Diee App</title>
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#66c0db">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header>
+  <h2>F00Diee App</h2>
+  <button id="menuBtn">☰</button>
+</header>
+
+<!-- Install Button -->
+<div style="text-align:center;">
+  <button id="installBtn" style="display:none;">Install App</button>
+</div>
+
+<!-- Overlay -->
+<div id="overlay"></div>
+
+<!-- Sidebar -->
+<nav id="sidebar">
+  <a href="index.html">Home</a>
+  <a href="pages/about.html">About</a>
+  <a href="pages/contact.html">Contact</a>
+</nav>
+
+<main>
+
+<div class="card">
+  <img src="img/burger.png">
+  <h3>Burger</h3>
+  <p>Rs: 85</p>
+</div>
+
+<div class="card">
+  <img src="img/pasta.png">
+  <h3>Pasta</h3>
+  <p>Rs: 80</p>
+</div>
+
+<div class="card">
+  <img src="img/rice.png">
+  <h3>Rice</h3>
+  <p>Rs: 100</p>
+</div>
+
+<div class="card">
+  <img src="img/desserts.png">
+  <h3>Desserts</h3>
+  <p>Rs: 70</p>
+</div>
+
+</main>
+
+<script src="js/ui.js"></script>
+
+<!-- Service Worker Register -->
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js')
+    .then(() => console.log("SW Registered"))
+    .catch(err => console.log(err));
+}
+</script>
+
+<!-- Install Prompt -->
+<script>
+let deferredPrompt;
+
+window.addEventListener("beforeinstallprompt", e => {
+  e.preventDefault();
+  deferredPrompt = e;
+  document.getElementById("installBtn").style.display = "block";
+});
+
+document.getElementById("installBtn").addEventListener("click", () => {
+  deferredPrompt.prompt();
+});
+</script>
+
+</body>
+</html>
