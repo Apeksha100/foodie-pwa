@@ -1,19 +1,19 @@
 {
   "name": "F00Diee Food App",
   "short_name": "F00Diee",
-  "start_url": "index.html",
+  "start_url": "/foodie-pwa/index.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#66c0db",
   "icons": [
     {
-      "src": "img/icon.png",
-      "sizes": "192x192",
+      "src": "/foodie-pwa/img/icon.png",
+      "sizes": "225x225",
       "type": "image/png"
     },
     {
-      "src": "img/icon2.png",
-      "sizes": "512x512",
+      "src": "/foodie-pwa/img/icon2.png",
+      "sizes": "225x225",
       "type": "image/png"
     }
   ]

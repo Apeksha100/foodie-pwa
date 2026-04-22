@@ -1,16 +1,15 @@
 const CACHE_NAME = "foodiee-v1";
 
 const assets = [
-  "/",
-  "/index.html",
-  "/css/style.css",
-  "/js/ui.js",
-  "/pages/about.html",
-  "/pages/contact.html",
-  "/img/burger.png",
-  "/img/pasta.png",
-  "/img/rice.png",
-  "/img/desserts.png"
+  "/foodie-pwa/index.html",
+  "/foodie-pwa/css/style.css",
+  "/foodie-pwa/js/ui.js",
+  "/foodie-pwa/pages/about.html",
+  "/foodie-pwa/pages/contact.html",
+  "/foodie-pwa/img/burger.png",
+  "/foodie-pwa/img/pasta.png",
+  "/foodie-pwa/img/rice.png",
+  "/foodie-pwa/img/desserts.png"
 ];
 
 // INSTALL
@@ -41,6 +40,9 @@ self.addEventListener("activate", event => {
 self.addEventListener("fetch", event => {
   event.respondWith(
     caches.match(event.request)
-      .then(response => response || fetch(event.request))
+      .then(response => {
+        return response || fetch(event.request)
+          .catch(() => caches.match("/foodie-pwa/index.html"));
+      })
   );
 });
